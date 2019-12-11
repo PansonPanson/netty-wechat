@@ -24,7 +24,7 @@ public class WebsocketServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(mainGroup, subGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(null);
+                    .childHandler(new WSServerInitializer());
 
             ChannelFuture future = serverBootstrap.bind(8088).sync();
 
