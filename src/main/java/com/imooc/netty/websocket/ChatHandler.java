@@ -7,6 +7,7 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 
@@ -29,7 +30,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         System.out.println("接受到的数据：" + content);
 
         for (Channel channel : clients) {
-            channel.writeAndFlush(new TextWebSocketFrame("[服务器接收到消息：]" + LocalDateTime.now() + "接收到消息，消息为：" + content);
+            channel.writeAndFlush(new TextWebSocketFrame("[服务器接收到消息：]" + LocalDateTime.now() + "接收到消息，消息为：" + content));
         }
 
     }
